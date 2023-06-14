@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section {
+  max-width: 1366px;
+  margin: 0px auto;
+  padding: 0px 30px;
+}
+.navigation::-webkit-scrollbar {
+  display: none;
+}
+
+/*Post Content*/
+#content {
+  & > p:first-child {
+    font-size: 20px;
+    font-weight: 500;
+    padding: 20px 0px;
+  }
+  & > figure,
+  iframe {
+    & > figure,
+    iframe {
+      margin: 20px 0px;
+      & > img {
+        width: 100% !important;
+      }
+    }
+  }
+}
