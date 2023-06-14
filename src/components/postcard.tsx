@@ -5,7 +5,7 @@ import { Category } from './post-info';
 export const PostCard = ({ post }: any) => {
   return (
     <div className="p-3 w-full">
-      <div className="bg-white border-1 flex-col md:flex-row flex min-h-[240px] hover:shadow-normal transition duration-200">
+      <div className="bg-white border-1 rounded-lg shadow-sm flex-col md:flex-row flex min-h-[240px] hover:shadow-md transition duration-200">
         {post._embedded['wp:featuredmedia'] && (
           <div className="md:basis-1/3 h-100">
             <Image
@@ -47,7 +47,7 @@ export const PostCard = ({ post }: any) => {
           />
           <Link
             href={'/post/' + post.id}
-            className="border-1 w-[120px] text-center py-2 px-5 hover:bg-[rgba(0,0,0,0.1)]"
+            className="border-1 w-[120px] text-center py-2 px-5 hover:bg-[rgba(0,0,0,0.1)] rounded-sm shadow-sm"
           >
             Read more
           </Link>

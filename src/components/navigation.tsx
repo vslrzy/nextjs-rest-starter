@@ -10,8 +10,8 @@ export const Navigation = () => {
   const { passed } = ContextFunction();
 
   return (
-    <nav className="w-full fixed bg-white top-0 left-0 right-0 border-b-1">
-      <section className="flex w-full h-[100px] items-center justify-between relative">
+    <nav className="w-full fixed bg-white top-0 left-0 right-0 pt-2 px-2">
+      <section className="flex w-full h-[100px] items-center justify-between relative border-1 rounded-md shadow-sm">
         <Logo setToggle={setToggle} />
 
         <div className="flex items-center gap-5">
@@ -37,12 +37,12 @@ export const Navigation = () => {
         </div>
 
         <div
-          className={`shadow-xl fixed top-[100px] left-0 right-0 bg-white border-b-1 py-5 ${
+          className={` fixed top-[100px] left-0 right-0 px-2 ${
             toggle ? 'hidden' : 'block'
           }`}
         >
-          <section>
-            <h1 className="p-1 text-header font-bold">Categories</h1>
+          <section className="border-1 shadow-sm rounded-md bg-white mt-5 py-8">
+            <h1 className="px-1 py-5 text-header font-bold">Categories</h1>
             <div className=" overflow-y-scroll md:h-auto h-[60vh] navigation">
               {/* @ts-expect-error Server Component */}
               {passed.categories_data.length == 0 ? (
@@ -59,7 +59,7 @@ export const Navigation = () => {
                         setToggle(true);
                       }}
                     >
-                      <span className="border-1 block p-3 text-sm font-medium shadow-lg rounded-md hover:bg-[rgba(0,0,0,0.2)]">
+                      <span className="border-1 block p-3 text-sm font-medium shadow-sm rounded-md hover:bg-[rgba(0,0,0,0.2)]">
                         {category.name}
                       </span>
                     </Link>

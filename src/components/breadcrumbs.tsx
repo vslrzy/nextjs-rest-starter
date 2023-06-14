@@ -6,8 +6,8 @@ export default async function Breadcrumbs({ categoryID }: any) {
     process.env.NEXT_PUBLIC_URL + `/wp-json/wp/v2/categories/${categoryID}`
   ).then((res) => res.json());
   return (
-    <div className="w-full py-3 border-b-1 text-sm font-medium">
-      <section>
+    <div className="w-full py-5 text-sm font-medium">
+      <section className="border-1 rounded-md shadow-sm py-3">
         <Link href={'/'}>Homepage</Link>
         {' / '}
         {/*Category name*/}

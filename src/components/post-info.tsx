@@ -7,7 +7,7 @@ const Category = async ({ category }: any) => {
   ).then((res) => res.json());
   return (
     <Link href={`/category/${data.slug}`}>
-      <span className="font-medium border-1 px-3 py-1 text-sm my-2 inline-block mr-1">
+      <span className="font-medium border-1 px-3 py-1 text-sm my-2 inline-block mr-1 rounded-sm shadow-sm">
         {data.name}
       </span>
     </Link>
@@ -21,7 +21,7 @@ const Author = async ({ author }: any) => {
   ).then((res) => res.json());
   return (
     <Link href={`/author/${data.slug}`}>
-      <span className="font-medium border-1 px-3 py-1 text-sm my-2 inline-block mr-1">
+      <span className="font-medium border-1 px-3 py-1 text-sm my-2 inline-block mr-1 rounded-sm shadow-sm">
         {data.name}
       </span>
     </Link>
