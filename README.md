@@ -74,5 +74,5 @@ Brauzerdə [http://localhost:3000](http://localhost:3000) linkini açıb nətic�
 
 # Səhifələmə
 
-# Canlə və ümümi axtarış və s.
+# Canlı və ümümi axtarış və s.
 ```
