@@ -2,7 +2,8 @@ import Breadcrumbs from '@/components/breadcrumbs';
 import List from '@/components/list';
 
 //Dynamic metadata generating
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata(props: any) {
+  const params = await props.params;
   const param = params.slug;
   const param_data = await fetch(
     process.env.NEXT_PUBLIC_URL + `/wp-json/wp/v2/categories?slug=${param}`
@@ -14,7 +15,9 @@ export async function generateMetadata({ params }: any) {
   };
 }
 
-export default async function Page({ searchParams, params }: any) {
+export default async function Page(props: any) {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
   //Get search param count
   const page =
     searchParams.page == undefined

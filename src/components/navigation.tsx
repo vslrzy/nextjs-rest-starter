@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { ContextFunction } from './context';
-import { useState } from 'react';
-import Image from 'next/image';
+import Link from "next/link";
+import { ContextFunction } from "./context";
+import { useState } from "react";
+import Image from "next/image";
 
 export const Navigation = () => {
   const [toggle, setToggle] = useState(true);
@@ -15,11 +15,11 @@ export const Navigation = () => {
         <Logo setToggle={setToggle} />
 
         <div className="flex items-center gap-5">
-          <Link href={'/search'} className="h-[20px]">
+          <Link href={"/search"} className="h-[20px]">
             <Image
-              width={'500'}
-              height={'500'}
-              alt={'search_icon'}
+              width={"500"}
+              height={"500"}
+              alt={"search_icon"}
               className="h-full w-auto"
               src="/search.svg"
             />
@@ -38,7 +38,7 @@ export const Navigation = () => {
 
         <div
           className={` fixed top-[100px] left-0 right-0 px-2 ${
-            toggle ? 'hidden' : 'block'
+            toggle ? "hidden" : "block"
           }`}
         >
           <section className="border-1 shadow-sm rounded-md bg-white mt-5 py-8">
@@ -46,7 +46,7 @@ export const Navigation = () => {
             <div className=" overflow-y-scroll md:h-auto h-[60vh] navigation">
               {/* @ts-expect-error Server Component */}
               {passed.categories_data.length == 0 ? (
-                'There are not any category'
+                "There are not any category"
               ) : (
                 <div className="h-auto md:flex-row flex-col flex flex-wrap">
                   {/* @ts-expect-error Server Component */}
@@ -75,31 +75,24 @@ export const Navigation = () => {
 };
 
 export const Logo = ({ setToggle }: any) => {
-  const { passed } = ContextFunction();
+  const { passed }: any = ContextFunction();
   return (
     <Link
-      href={'/'}
+      href={"/"}
       className="h-full flex items-center"
       onClick={() => {
         setToggle && setToggle(true);
       }}
     >
-      {/* @ts-expect-error Server Component */}
       {passed.site_logo_data == null ? (
-        <span className="text-logo font-bold">
-          {/* @ts-expect-error Server Component */}
-          {passed.site_name}
-        </span>
+        <span className="text-logo font-bold">{passed.site_name}</span>
       ) : (
         <Image
-          width={'500'}
-          height={'500'}
-          alt={'logo'}
+          width={"500"}
+          height={"500"}
+          alt={"logo"}
           className="h-[40px] w-auto"
-          src={
-            /* @ts-expect-error Server Component */
-            passed.site_logo_data.link
-          }
+          src={passed.site_logo_data.source_url}
         />
       )}
     </Link>

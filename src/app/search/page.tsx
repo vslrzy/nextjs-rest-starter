@@ -1,7 +1,8 @@
 import List from '@/components/list';
 import SearchForm from '@/components/search-form';
 
-export default async function Page({ searchParams }: any) {
+export default async function Page(props: any) {
+  const searchParams = await props.searchParams;
   //Get search param count
   const page =
     searchParams.page == undefined

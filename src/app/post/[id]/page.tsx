@@ -1,10 +1,11 @@
-import Breadcrumbs from '@/components/breadcrumbs';
-import List from '@/components/list';
-import { Author, Category } from '@/components/post-info';
-import Image from 'next/image';
+import Breadcrumbs from "@/components/breadcrumbs";
+import List from "@/components/list";
+import { Author, Category } from "@/components/post-info";
+import Image from "next/image";
 
 //Dynamic metadata generating
-export async function generateMetadata({ params }: any) {
+export async function generateMetadata(props: any) {
+  const params = await props.params;
   const param = params.id;
   const param_data = await fetch(
     process.env.NEXT_PUBLIC_URL + `/wp-json/wp/v2/posts/${param}`
@@ -12,11 +13,13 @@ export async function generateMetadata({ params }: any) {
 
   return {
     title: param_data.title.rendered,
-    description: 'Author',
+    description: "Author",
   };
 }
 
-export default async function Page({ params, searchParams }: any) {
+export default async function Page(props: any) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   //Get search param count
   const page =
     searchParams.page == undefined
@@ -32,8 +35,7 @@ export default async function Page({ params, searchParams }: any) {
 
   return (
     <main>
-      {/* @ts-expect-error Server Component */}
-      {data.categories && <Breadcrumbs categoryID={data.categories['0']} />}
+      {data.categories && <Breadcrumbs categoryID={data.categories["0"]} />}
       <section>
         {/*Post title*/}
         <h1
@@ -44,11 +46,8 @@ export default async function Page({ params, searchParams }: any) {
         {data.categories && (
           <div>
             <span className="font-medium text-sm">Category: </span>
-            {data.categories.map((category: any) => (
-              <>
-                {/* @ts-expect-error Server Component */}
-                <Category category={category} />
-              </>
+            {data.categories.map((category: any, index: number) => (
+              <Category category={category} key={index} />
             ))}
           </div>
         )}
@@ -56,17 +55,16 @@ export default async function Page({ params, searchParams }: any) {
         {data.author && (
           <div>
             <span className="font-medium text-sm">Author: </span>
-            {/* @ts-expect-error Server Component */}
             <Author author={data.author} />
           </div>
         )}
         {/*Post featured image*/}
-        {data._embedded['wp:featuredmedia'] && (
+        {data._embedded["wp:featuredmedia"] && (
           <Image
-            width={'600'}
-            height={'600'}
+            width={"600"}
+            height={"600"}
             alt={data.slug}
-            src={data._embedded['wp:featuredmedia']['0'].link}
+            src={data._embedded["wp:featuredmedia"]["0"].source_url}
             className="w-full h-[550px] object-cover my-2"
           />
         )}
@@ -82,10 +80,7 @@ export default async function Page({ params, searchParams }: any) {
 
       {/*Latest posts from same category*/}
       {data.categories && (
-        <>
-          {/* @ts-expect-error Server Component */}
-          <List category={data.categories} page={page} postID={data.id} />
-        </>
+        <List category={data.categories} page={page} postID={data.id} />
       )}
     </main>
   );
