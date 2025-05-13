@@ -1,4 +1,4 @@
-import List from '@/components/list';
+import List from "@/components/list";
 
 export default async function Home(props: any) {
   const searchParams = await props.searchParams;
@@ -15,6 +15,7 @@ export default async function Home(props: any) {
       <section>
         <h1 className="text-pageheader font-bold py-5">Latest posts</h1>
       </section>
+      {/* @ts-expect-error Server Component */}
       <List page={page} />
     </main>
   );
