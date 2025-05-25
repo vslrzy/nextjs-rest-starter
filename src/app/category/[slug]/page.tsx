@@ -34,7 +34,6 @@ export default async function Page(props: any) {
 
   return (
     <main>
-      {/* @ts-expect-error Server Component */}
       <Breadcrumbs categoryID={category_info['0'].id} />
       <section>
         <h1 className="text-pageheader font-bold my-2">
@@ -42,7 +41,6 @@ export default async function Page(props: any) {
           Category: {category_info['0'].name}
         </h1>
       </section>
-      {/* @ts-expect-error Server Component */}
       <List category={category_info} page={page} />
     </main>
   );

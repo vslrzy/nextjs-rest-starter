@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export const Navigation = () => {
   const [toggle, setToggle] = useState(true);
-  const { passed } = ContextFunction();
+  const { passed }: { passed: any } = ContextFunction();
 
   return (
     <nav className="w-full fixed bg-white top-0 left-0 right-0 pt-2 px-2">
@@ -44,13 +44,11 @@ export const Navigation = () => {
           <section className="border-1 shadow-sm rounded-md bg-white mt-5 py-8">
             <h1 className="px-1 py-5 text-header font-bold">Categories</h1>
             <div className=" overflow-y-scroll md:h-auto h-[60vh] navigation">
-              {/* @ts-expect-error Server Component */}
               {passed.categories_data.length == 0 ? (
                 "There are not any category"
               ) : (
                 <div className="h-auto md:flex-row flex-col flex flex-wrap">
-                  {/* @ts-expect-error Server Component */}
-                  {passed.categories_data.map((category) => (
+                  {passed.categories_data.map((category: any) => (
                     <Link
                       href={`/category/${category.slug}`}
                       key={category.id}

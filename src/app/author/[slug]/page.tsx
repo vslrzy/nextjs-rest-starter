@@ -38,7 +38,6 @@ export default async function Page(props: any) {
           Author: {author['0'].name}
         </h1>
       </section>
-      {/* @ts-expect-error Server Component */}
       <List author={author} page={page} />
     </main>
   );

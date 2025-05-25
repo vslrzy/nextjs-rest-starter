@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function SearchForm() {
-  const [state, setState] = useState('');
-  const [data, setData] = useState(null);
+  const [state, setState] = useState("");
+  const [data, setData]: any = useState(null);
 
   //Get searched data from api
   async function getSearch() {
@@ -31,8 +31,8 @@ export default function SearchForm() {
       >
         <input
           className="border-1 rounded-md w-full py-3 px-5 outline-none"
-          type={'search'}
-          placeholder={'Search'}
+          type={"search"}
+          placeholder={"Search"}
           onChange={(e) => {
             setState(e.target.value);
           }}
@@ -45,25 +45,21 @@ export default function SearchForm() {
         </Link>
       </form>
       {data == null ? (
-        ''
-      ) : /* @ts-expect-error Server Component */
-      data.length == 0 ? (
+        ""
+      ) : data.length == 0 ? (
         <h1 className="text-pageheader text-center font-bold py-5">
           Nothing founded
         </h1>
       ) : (
         <div className="border-1 p-5 flex flex-col gap-4 rounded-md">
-          {
-            /* @ts-expect-error Server Component */
-            data.map((post: any) => (
-              <Link href={`/post/${post.id}`} key={post.id}>
-                <h1
-                  className="text-md hover:underline font-medium"
-                  dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-                />
-              </Link>
-            ))
-          }
+          {data.map((post: any) => (
+            <Link href={`/post/${post.id}`} key={post.id}>
+              <h1
+                className="text-md hover:underline font-medium"
+                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+              />
+            </Link>
+          ))}
         </div>
       )}
     </div>

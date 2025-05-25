@@ -47,7 +47,6 @@ export default async function Page(props: any) {
               </h1>
               <SearchForm />
             </section>
-            {/* @ts-expect-error Server Component */}
             <List search={query} page={page} />
           </>
         )}
